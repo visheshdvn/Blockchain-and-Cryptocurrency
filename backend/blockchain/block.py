@@ -35,6 +35,10 @@ class Block():
             f'nonce: {self.nonce})'
         )
     
+    def __eq__(self, other):
+        return self.__dict__ == other.__dict__
+    
+    
     @staticmethod
     def mine_block(last_block, data):
         """
@@ -104,7 +108,7 @@ class Block():
             block.nonce,
             block.difficulty
         )
-        
+
         if block.hash != reconstructed_hash:
             raise Exception('The main hash must be correct')
 
